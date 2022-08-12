@@ -1,69 +1,67 @@
+class Node:
+  def __init__(self,data):
+    self.data = data
+    self.next = None
+
+
 class Stack:
-  value=None
-  pointer=None
-  def __init__(self, v=None, p=None):
-    self.value=v
-    self.pointer=p
+    # head is default NULL
+    def __init__(self):
+        self.head = None
+    # Checks if stack is empty
+    def isempty(self):
+        if self.head == None:
+            return True
+        else:
+            return False
+    # Method to add data to the stack
+    # adds to the start of the stack
+    def push(self,data):
+        if self.head == None:
+            self.head=Node(data)
+        else:
+            newnode = Node(data)
+            newnode.next = self.head
+            self.head = newnode
+    # Remove element that is the current head (start of the stack)
+    def pop(self):
+        if self.isempty():
+            return None
+        else:
+            # Removes the head node and makes 
+            #the preceding one the new head
+            poppednode = self.head
+            self.head = self.head.next
+            poppednode.next = None
+            return poppednode.data
+    # Returns the head node data
+    def peek(self):
+        if self.isempty():
+            return None
+        else:
+            return self.head.data
+    # Prints out the stack     
+    def display(self):
+        iternode = self.head
+        if self.isempty():
+            print("[]")
+        else:
+            while(iternode != None):
+                print(iternode.data,"->",end = " ")
+                iternode = iternode.next
+            print(f'\n\n')
+            return
 
-  def push(self,v):
-    s=Stack(v,self)
-
-  def link(self,p):
-    if isinstance(p,Stack):
-      self.pointer=p
-    else:
-      print('Error linking')
-
-  def hasPointer(self):
-    if self.pointer is None:
-      return 'False'
-    return 'True pointer.value='+self.pointer.value
-
-  def __str__(self):
-    return 'value='+str(self.value)+' pointer='+self.hasPointer()+' '
-
-  def pop(self):
-    v=self.value
-    if self.pointer is not None:
-      self.value=self.pointer.value
-      self.pointer=self.pointer.pointer
-    return v
 
 s=Stack()
-print(s)
-s.value='2'
-print(s)
-sParent=Stack('1')
-s.link(sParent)
-print(s)
-s.push('3')
+s.display()
+s.push('1')
+s.display()
 print('poping: '+s.pop())
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-print(s)
-
+s.display()
+s.push('1')
+s.display()
+print()
+s.push('2')
+s.push('3')
+s.display()
