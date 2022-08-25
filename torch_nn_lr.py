@@ -27,7 +27,19 @@ print(n_samples,n_features)
 input_size=n_features
 output_size=n_features
 
-model=nn.Linear(input_size,output_size)
+#model=nn.Linear(input_size,output_size)
+
+
+class LinearRegression(nn.Module):
+    def __init__(self, input_dim, output_dim):
+        super(LinearRegression, self).__init__()
+        # define diferent layers
+        self.lin = nn.Linear(input_dim, output_dim)
+    def forward(self, x):
+        return self.lin(x)
+model = LinearRegression(input_size, output_size)
+
+
 
 #w = torch.tensor(0.0, dtype=torch.float32, requires_grad=True)
 
